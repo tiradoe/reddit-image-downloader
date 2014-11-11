@@ -18,4 +18,3 @@ To-Do
 -----
 * Get images that are not linked directly or are in albums
 * Download the provided number of images even if some are skipped
-* Make compatible with python 2.6+
