@@ -9,7 +9,7 @@ Usage
 -----
 
 From the command line enter:  
-1.  python3 downloader.py NUMBER_OF_IMAGES DOWNLOAD_PATH SUBREDDIT_NAME  
+1.  python3 downloader.py numberOfImagesToGet /path/to/download/directory subredditname  
 2.  ???  
 3.  Profit! (or just enjoy your brand new images)
 
