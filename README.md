@@ -8,9 +8,9 @@ Requires python 3 and PRAW ( https://github.com/praw-dev/praw ).
 Usage
 -----
 
-From the command line enter:
-1.  python3 downloader.py NUMBER_OF_IMAGES DOWNLOAD_PATH SUBREDDIT_NAME
-2.  ???
+From the command line enter:  
+1.  python3 downloader.py NUMBER_OF_IMAGES DOWNLOAD_PATH SUBREDDIT_NAME  
+2.  ???  
 3.  Profit! (or just enjoy your brand new images)
 
 
