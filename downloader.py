@@ -31,6 +31,9 @@ for post in submissions:
 	if isDuplicate(file_name, file_path) or isAlbum(file_name):
 		continue
 
-	urllib.request.urlretrieve(link,file_path + '/' + file_name)
+	try:
+		urllib.request.urlretrieve(link,file_path + '/' + file_name)
+	except Exception:
+		urllib.urlretrieve(link,file_path + '/' + file_name) #python2 compatibility
 
 
