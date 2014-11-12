@@ -3,7 +3,7 @@ reddit-image-downloader
 
 Allows users to get images from image subreddits quickly and easily
 
-Requires PRAW ( https://github.com/praw-dev/praw ).
+Requires PRAW module ( https://github.com/praw-dev/praw ).
 
 Usage
 -----
@@ -16,5 +16,5 @@ From the command line enter:
 
 To-Do
 -----
-* Get images that are not linked directly or are in albums
+* Get images from imgur albums/galleries
 * Download the provided number of images even if some are skipped
