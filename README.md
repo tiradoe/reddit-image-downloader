@@ -18,3 +18,4 @@ To-Do
 -----
 * Get images from imgur albums/galleries
 * Download the provided number of images even if some are skipped
+* Remove PRAW dependency

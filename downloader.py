@@ -1,3 +1,9 @@
+"""
+Reddit image downloader
+Author: Edward Tirado Jr
+License: MIT
+"""
+
 import sys, os, re, urllib
 import praw
 
