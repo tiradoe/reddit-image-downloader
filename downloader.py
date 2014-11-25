@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Reddit image downloader
 Author: Edward Tirado Jr
@@ -11,7 +12,7 @@ import urllib
 import praw
 
 EXTENSIONS = set(['.jpg', '.jpeg', '.gif', '.png'])
-
+isPython3 = sys.version_info >= (3,0)
 
 def isDuplicate(file_name, file_path):
     file_list = os.listdir(file_path)
@@ -52,7 +53,13 @@ for post in submissions:
         link += '.jpg'
         file_name += '.jpg'
 
-    try:
-        urllib.request.urlretrieve(link, file_path + '/' + file_name)
-    except Exception:
-        urllib.urlretrieve(link, file_path + '/' + file_name)  # python2 compat
+    if isPython3:
+        try:
+            urllib.request.urlretrieve(link, file_path + '/' + file_name)
+        except Exception:
+            continue
+    else:
+        try:
+            urllib.urlretrieve(link, file_path + '/' + file_name)  # python2 compat
+        except:
+            continue
