@@ -12,7 +12,8 @@ import urllib
 import praw
 
 EXTENSIONS = set(['.jpg', '.jpeg', '.gif', '.png'])
-isPython3 = sys.version_info >= (3,0)
+isPython3 = sys.version_info >= (3, 0)
+
 
 def isDuplicate(file_name, file_path):
     file_list = os.listdir(file_path)
@@ -34,12 +35,12 @@ def isAlbum(link, file_name):
 def getContentType(link):
     file_info = urllib.urlopen(link).info()
     return file_info['Content-Type']
-    
 
 if len(sys.argv) < 4:
     print('Not enough arguments: \n' +
           'Need number of images, download directory, and subreddit name')
     sys.exit()
+
 
 script, image_num, file_path, subreddit = sys.argv
 
@@ -48,10 +49,10 @@ submissions = reddit_conn.get_subreddit(subreddit).get_hot(limit=int(image_num))
 
 for post in submissions:
     link = post.url
-    file_name = link.split('/')[-1]   
+    file_name = link.split('/')[-1]
     file_info = getContentType(link)
 
-    if isDuplicate(file_name, file_path) or isAlbum(link, file_name):
+    if isDuplicate(file_info, file_path) or isAlbum(link, file_name):
         continue
 
     # Removes any type other than image
@@ -68,6 +69,7 @@ for post in submissions:
             continue
     else:
         try:
-            urllib.urlretrieve(link, file_path + '/' + file_name)  # python2 compat
+            # python2 compat
+            urllib.urlretrieve(link, file_path + '/' + file_name)
         except:
             continue
