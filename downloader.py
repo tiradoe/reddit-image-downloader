@@ -31,6 +31,11 @@ def isAlbum(link, file_name):
         return True
 
 
+def getContentType(link):
+    file_info = urllib.urlopen(link).info()
+    return file_info['Content-Type']
+    
+
 if len(sys.argv) < 4:
     print('Not enough arguments: \n' +
           'Need number of images, download directory, and subreddit name')
@@ -43,15 +48,18 @@ submissions = reddit_conn.get_subreddit(subreddit).get_hot(limit=int(image_num))
 
 for post in submissions:
     link = post.url
-    file_name = link.split('/')[-1]
+    file_name = link.split('/')[-1]   
+    file_info = getContentType(link)
 
     if isDuplicate(file_name, file_path) or isAlbum(link, file_name):
         continue
 
-    # Allows images without extensions to download properly. Hacky...
-    if not file_name.endswith(tuple(EXTENSIONS)):
-        link += '.jpg'
-        file_name += '.jpg'
+    # Removes any type other than image
+
+    if not file_info.startswith("image"):
+        continue
+
+    # Allows images without extensions to download properly.
 
     if isPython3:
         try:
