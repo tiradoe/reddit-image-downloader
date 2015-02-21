@@ -33,8 +33,20 @@ def isAlbum(link, file_name):
 
 
 def getContentType(link):
-    file_info = urllib.urlopen(link).info()
-    return file_info['Content-Type']
+    if isPython3:
+        try:
+            file_info = urllib.request.urlopen(link).info()
+            return file_info['Content-Type']
+        except Exception:
+            return False
+    else:
+        try:
+            # python2 compat
+            file_info = urllib.urlopen(link).info()
+            return file_info['Content-Type']
+        except:
+            return False
+
 
 if len(sys.argv) < 4:
     print('Not enough arguments: \n' +
