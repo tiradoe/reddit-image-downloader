@@ -10,7 +10,6 @@ import os
 import re
 import urllib
 import praw
-import imghdr
 
 EXTENSIONS = set(['.jpg', '.jpeg', '.gif', '.png'])
 isPython3 = sys.version_info >= (3,0)
